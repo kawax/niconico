@@ -10,11 +10,15 @@ class Query
     /**
      * @var array
      */
+    protected $filters = [];
+
+    /**
+     * @var array
+     */
     protected $query = [
         'q' => '初音ミク',
         'targets' => 'title,tags',
         'fields' => 'contentId,title,description,tags,startTime,viewCounter,thumbnailUrl',
-//        'filters' => 'filters[viewCounter][gte]=1000000',
         '_sort' => '-startTime',
         '_offset' => '0',
         '_limit' => '10',
@@ -26,17 +30,30 @@ class Query
      */
     public function build()
     {
-        $query = '';
+        $query = http_build_query($this->query, '', '&', PHP_QUERY_RFC3986);
 
-        foreach ($this->query as $key => $value) {
-            if ($key === 'filters') {
-                $query .= urlencode($value) . '&';
-            } else {
-                $query .= "$key=" . urlencode($value) . '&';
+        $filters = '';
+        if (count($this->filters) > 0) {
+            foreach ($this->filters as $filter) {
+                $filters .= '&' . $filter;
             }
+
+            $query .= $filters;
         }
 
         return $query;
+    }
+
+    /**
+     * @param string[] $filters
+     *
+     * @return $this
+     */
+    public function filters($filters)
+    {
+        $this->filters = $filters;
+
+        return $this;
     }
 
     /**

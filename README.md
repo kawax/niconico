@@ -26,6 +26,7 @@ $query = new Query();
 $query->q = "初音ミク";
 $query->targets = 'title,tags';
 $query->_sort = "-viewCounter";
+$query->filters(['filters[mylistCounter][gte]=10000', 'filters[commentCounter][gte]=100000']);
 
 $search = new Search();
 
