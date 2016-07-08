@@ -68,4 +68,20 @@ class NicoSearchTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(200, $res->meta->status);
     }
 
+    public function testSearchIllust()
+    {
+        $query = new Query();
+        $query->q = '初音ミク';
+        $query->targets = 'tags';
+        $query->fields = 'contentId,title,description,tags,thumbnailUrl,viewCounter,mylistCounter,commentCounter,startTime';
+        $query->_sort = '-startTime';
+        $query->_limit = '10';
+
+
+        $res = $this->search->service('illust')->search($query);
+//        dd($res);
+
+        $this->assertEquals(200, $res->meta->status);
+    }
+
 }
