@@ -1,4 +1,5 @@
 <?php
+
 namespace Niconico;
 
 use GuzzleHttp\Client;
@@ -46,11 +47,11 @@ trait NicoClient
     {
         $response = $this->getClient()->request($method, $url, [
             'headers' => [
-                'User-Agent' => $this->userAgent
-            ]
+                'User-Agent' => $this->userAgent,
+            ],
         ]);
 
-        return (string)$response->getBody();
+        return (string) $response->getBody();
     }
 
     /**

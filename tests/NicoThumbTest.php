@@ -1,4 +1,5 @@
 <?php
+
 use Niconico\ThumbInfo;
 
 class NicoThumbTest extends PHPUnit_Framework_TestCase
@@ -16,7 +17,7 @@ class NicoThumbTest extends PHPUnit_Framework_TestCase
     {
         $this->thumb->get('sm9');
 
-        $this->assertEquals("sm9", $this->thumb->video_id);
+        $this->assertEquals('sm9', $this->thumb->video_id);
     }
 
     public function testNicoThumbJson()
@@ -24,7 +25,7 @@ class NicoThumbTest extends PHPUnit_Framework_TestCase
         $this->thumb->get('sm9');
 
         $this->assertContains('"video_id":"sm9"', $this->thumb->toJson());
-        $this->assertContains('"video_id":"sm9"', (string)$this->thumb);
+        $this->assertContains('"video_id":"sm9"', (string) $this->thumb);
     }
 
     public function testNicoThumbArray()
@@ -50,5 +51,4 @@ class NicoThumbTest extends PHPUnit_Framework_TestCase
     {
         $this->thumb->get('sm8');
     }
-
 }
