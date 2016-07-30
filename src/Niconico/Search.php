@@ -5,7 +5,8 @@ namespace Niconico;
 use Niconico\Search\Query;
 
 /**
- * niconico コンテンツ検索API
+ * niconico コンテンツ検索API.
+ *
  * @see http://search.nicovideo.jp/docs/api/search.html
  */
 class Search
