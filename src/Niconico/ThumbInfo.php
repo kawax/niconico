@@ -1,11 +1,10 @@
 <?php
+
 namespace Niconico;
 
 /**
  * Class ThumbInfo
- * getthumbinfo
- *
- * @package Niconico
+ * getthumbinfo.
  */
 class ThumbInfo
 {
@@ -14,7 +13,7 @@ class ThumbInfo
     /**
      * @var string
      */
-    public $endpoint = "http://ext.nicovideo.jp/api/getthumbinfo/";
+    public $endpoint = 'http://ext.nicovideo.jp/api/getthumbinfo/';
 
     /**
      * @var \SimpleXMLElement
@@ -24,19 +23,19 @@ class ThumbInfo
     /**
      * @param string $video_id sm9
      *
-     * @return $this
-     *
      * @throws \InvalidArgumentException
+     *
+     * @return $this
      */
     public function get($video_id)
     {
-        $url = $this->endpoint . $video_id;
+        $url = $this->endpoint.$video_id;
 
         $response = $this->request($url);
 
         $xml = simplexml_load_string($response);
 
-        if ((string)$xml['status'] === 'fail') {
+        if ((string) $xml['status'] === 'fail') {
             $this->data = $xml->error;
 
             throw new \InvalidArgumentException(sprintf('[%s]', $xml->error->description));
@@ -81,14 +80,15 @@ class ThumbInfo
 
     /**
      * @param string $property
-     * @return string
      *
      * @throws \Exception
+     *
+     * @return string
      */
     public function __get($property)
     {
         if (property_exists($this->data, $property)) {
-            return (string)$this->data->{$property};
+            return (string) $this->data->{$property};
         }
 
         throw new \Exception(sprintf('Property [%s] does not exist.', $property));

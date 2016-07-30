@@ -1,9 +1,9 @@
 <?php
+
 namespace Niconico\Search;
 
 /**
- * Class Query
- * @package Niconico\Search
+ * Class Query.
  */
 class Query
 {
@@ -16,12 +16,12 @@ class Query
      * @var array
      */
     protected $query = [
-        'q' => '初音ミク',
-        'targets' => 'title,tags',
-        'fields' => 'contentId,title,description,tags,startTime,viewCounter,thumbnailUrl',
-        '_sort' => '-startTime',
-        '_offset' => '0',
-        '_limit' => '10',
+        'q'        => '初音ミク',
+        'targets'  => 'title,tags',
+        'fields'   => 'contentId,title,description,tags,startTime,viewCounter,thumbnailUrl',
+        '_sort'    => '-startTime',
+        '_offset'  => '0',
+        '_limit'   => '10',
         '_context' => 'niconico',
     ];
 
@@ -35,7 +35,7 @@ class Query
         $filters = '';
         if (count($this->filters) > 0) {
             foreach ($this->filters as $filter) {
-                $filters .= '&' . $filter;
+                $filters .= '&'.$filter;
             }
 
             $query .= $filters;
@@ -58,6 +58,7 @@ class Query
 
     /**
      * @param $property
+     *
      * @return mixed
      */
     public function __get($property)
@@ -65,7 +66,7 @@ class Query
         if (array_key_exists($property, $this->query)) {
             return $this->query[$property];
         } else {
-            return null;
+            return;
         }
     }
 
@@ -80,6 +81,7 @@ class Query
 
     /**
      * @param string $name
+     *
      * @return bool
      */
     public function __isset($name)
@@ -94,5 +96,4 @@ class Query
     {
         unset($this->query[$name]);
     }
-
 }

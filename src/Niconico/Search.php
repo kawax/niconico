@@ -1,13 +1,12 @@
 <?php
+
 namespace Niconico;
 
 use Niconico\Search\Query;
 
 /**
  * niconico コンテンツ検索API
- * http://search.nicovideo.jp/docs/api/search.html
- *
- * @package Niconico
+ * http://search.nicovideo.jp/docs/api/search.html.
  */
 class Search
 {
@@ -25,13 +24,13 @@ class Search
 
     /**
      * @param Query $query
-     * @param bool $assoc trueなら配列。falseならオブジェクト。
+     * @param bool  $assoc trueなら配列。falseならオブジェクト。
      *
      * @return mixed
      */
     public function search(Query $query, $assoc = false)
     {
-        $url = $this->endpoint() . '?' . $query->build();
+        $url = $this->endpoint().'?'.$query->build();
 
         $res = json_decode($this->request($url), $assoc);
 
