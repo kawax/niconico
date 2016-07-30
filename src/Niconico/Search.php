@@ -6,7 +6,7 @@ use Niconico\Search\Query;
 
 /**
  * niconico コンテンツ検索API
- * http://search.nicovideo.jp/docs/api/search.html.
+ * @see http://search.nicovideo.jp/docs/api/search.html
  */
 class Search
 {
