@@ -19,7 +19,7 @@
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "illuminate/support": "~5.3",
-        "phpunit/phpunit": "~5.0"
+        "phpunit/phpunit": "6.*"
     },
     "autoload": {
         "psr-4": {

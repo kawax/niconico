@@ -1,8 +1,10 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+
 use Niconico\ThumbInfo;
 
-class NicoThumbTest extends PHPUnit_Framework_TestCase
+class NicoThumbTest extends TestCase
 {
     protected $thumb;
 

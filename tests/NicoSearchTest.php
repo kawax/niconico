@@ -1,9 +1,11 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+
 use Niconico\Search;
 use Niconico\Search\Query;
 
-class NicoSearchTest extends PHPUnit_Framework_TestCase
+class NicoSearchTest extends TestCase
 {
     protected $search;
 
