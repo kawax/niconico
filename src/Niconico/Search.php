@@ -29,9 +29,9 @@ class Search
      *
      * @return mixed
      */
-    public function search(Query $query, $assoc = false)
+    public function search(Query $query, bool $assoc = false)
     {
-        $url = $this->endpoint().'?'.$query->build();
+        $url = $this->endpoint() . '?' . $query->build();
 
         $res = json_decode($this->request($url), $assoc);
 
@@ -43,7 +43,7 @@ class Search
      *
      * @return $this
      */
-    public function service($service)
+    public function service(string $service): Search
     {
         $this->service = $service;
 
@@ -53,7 +53,7 @@ class Search
     /**
      * @return string
      */
-    protected function endpoint()
+    protected function endpoint(): string
     {
         return str_replace(':service', $this->service, $this->endpoint);
     }

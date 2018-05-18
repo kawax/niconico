@@ -28,14 +28,14 @@ class Query
     /**
      * @return string
      */
-    public function build()
+    public function build(): string
     {
         $query = http_build_query($this->query, '', '&', PHP_QUERY_RFC3986);
 
         $filters = '';
         if (count($this->filters) > 0) {
             foreach ($this->filters as $filter) {
-                $filters .= '&'.$filter;
+                $filters .= '&' . $filter;
             }
 
             $query .= $filters;
@@ -45,11 +45,11 @@ class Query
     }
 
     /**
-     * @param string[] $filters
+     * @param array $filters
      *
      * @return $this
      */
-    public function filters($filters)
+    public function filters(array $filters): Query
     {
         $this->filters = $filters;
 
@@ -57,24 +57,24 @@ class Query
     }
 
     /**
-     * @param $property
+     * @param string $property
      *
      * @return mixed
      */
-    public function __get($property)
+    public function __get(string $property)
     {
         if (array_key_exists($property, $this->query)) {
             return $this->query[$property];
         } else {
-            return;
+            return null;
         }
     }
 
     /**
-     * @param $property
-     * @param $value
+     * @param string $property
+     * @param        $value
      */
-    public function __set($property, $value)
+    public function __set(string $property, $value)
     {
         $this->query[$property] = $value;
     }
@@ -84,7 +84,7 @@ class Query
      *
      * @return bool
      */
-    public function __isset($name)
+    public function __isset(string $name): bool
     {
         return isset($this->query[$name]);
     }
@@ -92,7 +92,7 @@ class Query
     /**
      * @param $name
      */
-    public function __unset($name)
+    public function __unset(string $name)
     {
         unset($this->query[$name]);
     }

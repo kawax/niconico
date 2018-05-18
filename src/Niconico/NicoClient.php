@@ -28,7 +28,7 @@ trait NicoClient
     /**
      * @return Client|ClientInterface
      */
-    public function getClient()
+    public function getClient(): ClientInterface
     {
         if (is_null($this->client)) {
             $this->client = new Client();
@@ -43,7 +43,7 @@ trait NicoClient
      *
      * @return string
      */
-    public function request($url, $method = 'GET')
+    public function request(string $url, string $method = 'GET'): string
     {
         $response = $this->getClient()->request($method, $url, [
             'headers' => [
@@ -51,13 +51,13 @@ trait NicoClient
             ],
         ]);
 
-        return (string) $response->getBody();
+        return (string)$response->getBody();
     }
 
     /**
      * @param string $userAgent
      */
-    public function setUserAgent($userAgent)
+    public function setUserAgent(string $userAgent)
     {
         $this->userAgent = $userAgent;
     }
