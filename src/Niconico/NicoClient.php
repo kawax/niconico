@@ -19,10 +19,14 @@ trait NicoClient
 
     /**
      * @param ClientInterface $client
+     *
+     * @return $this
      */
     public function setClient(ClientInterface $client)
     {
         $this->client = $client;
+
+        return $this;
     }
 
     /**
@@ -56,9 +60,13 @@ trait NicoClient
 
     /**
      * @param string $userAgent
+     *
+     * @return $this
      */
     public function setUserAgent(string $userAgent)
     {
         $this->userAgent = $userAgent;
+
+        return $this;
     }
 }

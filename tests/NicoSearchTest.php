@@ -25,7 +25,7 @@ class NicoSearchTest extends TestCase
         $query->filters(['filters[mylistCounter][gte]=10000', 'filters[commentCounter][gte]=100000']);
 
         $res = $this->search->service('video')->search($query);
-//        dd($res);
+        //        dd($res);
 
         $this->assertInternalType('object', $res);
         $this->assertEquals(200, $res->meta->status);
@@ -49,7 +49,7 @@ class NicoSearchTest extends TestCase
 
 
         $res = $this->search->service('live')->search($query, true);
-//        dd($res);
+        //        dd($res);
 
         $this->assertEquals(200, $res['meta']['status']);
     }
@@ -60,10 +60,10 @@ class NicoSearchTest extends TestCase
         $query->q = 'アニメ';
         $query->targets = 'tags';
         $query->fields = 'contentId,title,tags';
-        $query->filters(['filters[startTime][lt]='.rawurlencode('2016-01-01T00:00:00+09:00')]);
+        $query->filters(['filters[startTime][lt]=' . rawurlencode('2016-01-01T00:00:00+09:00')]);
 
         $res = $this->search->service('channel')->search($query);
-//        dd($res);
+        //        dd($res);
 
         $this->assertEquals(200, $res->meta->status);
     }
@@ -79,8 +79,18 @@ class NicoSearchTest extends TestCase
 
 
         $res = $this->search->service('illust')->search($query);
-//        dd($res);
+        //        dd($res);
 
         $this->assertEquals(200, $res->meta->status);
+    }
+
+    public function testQuery()
+    {
+        $query = (new Query())->build();
+
+        $this->assertEquals(
+            'q=%E5%88%9D%E9%9F%B3%E3%83%9F%E3%82%AF&targets=title%2Ctags&fields=contentId%2Ctitle%2Cdescription%2Ctags%2CstartTime%2CviewCounter%2CthumbnailUrl&_sort=-startTime&_offset=0&_limit=10&_context=niconico',
+            $query
+        );
     }
 }

@@ -3,6 +3,8 @@
 namespace Niconico\Search;
 
 /**
+ * マジックメソッドを使うことにより項目が追加・変更されても大丈夫なようにしている。
+ *
  * Class Query.
  */
 class Query
@@ -32,13 +34,8 @@ class Query
     {
         $query = http_build_query($this->query, '', '&', PHP_QUERY_RFC3986);
 
-        $filters = '';
-        if (count($this->filters) > 0) {
-            foreach ($this->filters as $filter) {
-                $filters .= '&' . $filter;
-            }
-
-            $query .= $filters;
+        if (!empty($this->filters)) {
+            $query .= '&' . implode('&', $this->filters);
         }
 
         return $query;
