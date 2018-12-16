@@ -15,7 +15,7 @@ class ThumbInfo
     /**
      * @var string
      */
-    public $endpoint = 'http://ext.nicovideo.jp/api/getthumbinfo/';
+    public $endpoint = 'https://ext.nicovideo.jp/api/getthumbinfo/';
 
     /**
      * @var \SimpleXMLElement

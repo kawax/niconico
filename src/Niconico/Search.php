@@ -16,7 +16,7 @@ class Search
     /**
      * @var string
      */
-    public $endpoint = 'http://api.search.nicovideo.jp/api/v2/:service/contents/search';
+    public $endpoint = 'https://api.search.nicovideo.jp/api/v2/:service/contents/search';
 
     /**
      * @var string
