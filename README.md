@@ -3,13 +3,13 @@
 [![Build Status](https://travis-ci.org/kawax/niconico.svg?branch=master)](https://travis-ci.org/kawax/niconico)
 
 ## Requirements
-PHP >= 7.0.0
+PHP >= 7.1.3
 
 ## 実装済みAPI
 自分で使う用なので必要なAPIのみ実装。
 
-- getthumbinfo http://dic.nicovideo.jp/a/%E3%83%8B%E3%82%B3%E3%83%8B%E3%82%B3%E5%8B%95%E7%94%BBapi
-- コンテンツ検索API http://site.nicovideo.jp/search-api-docs/search.html
+- getthumbinfo https://dic.nicovideo.jp/a/%E3%83%8B%E3%82%B3%E3%83%8B%E3%82%B3%E5%8B%95%E7%94%BBapi
+- コンテンツ検索API https://site.nicovideo.jp/search-api-docs/search.html
 
 ## Install
 
@@ -22,8 +22,9 @@ composer require revolution/niconico
 
 ### example1
 ```php
-use Niconico\Search;
-use Niconico\Search\Query;
+<?php
+use Revolution\Niconico\Search;
+use Revolution\Niconico\Search\Query;
 
 $query = new Query();
 $query->q = "初音ミク";
@@ -42,7 +43,20 @@ $response = $search->service('video')->search($query, true);
 
 ### example2
 ```php
-use Niconico\ThumbInfo;
+<?php
+use Revolution\Niconico\Search\Query;
+
+$query = new Query([
+  'q'        => '初音ミク',
+  'targets'  => 'title,tags',
+  '_sort'    => '-viewCounter',
+]);
+```
+
+### example3
+```php
+<?php
+use Revolution\Niconico\ThumbInfo;
 
 $thumb = new ThumbInfo();
 

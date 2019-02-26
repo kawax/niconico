@@ -1,8 +1,8 @@
 <?php
 
-namespace Niconico;
+namespace Revolution\Niconico;
 
-use Niconico\Search\Query;
+use Revolution\Niconico\Search\Query;
 
 /**
  * niconico コンテンツ検索API.

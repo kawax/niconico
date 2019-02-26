@@ -1,6 +1,6 @@
 <?php
 
-namespace Niconico;
+namespace Revolution\Niconico;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;

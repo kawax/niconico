@@ -1,6 +1,6 @@
 <?php
 
-namespace Niconico;
+namespace Revolution\Niconico;
 
 /**
  * マジックメソッドを使うことにより項目が追加・変更されても大丈夫なようにしている

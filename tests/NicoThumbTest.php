@@ -2,10 +2,13 @@
 
 use PHPUnit\Framework\TestCase;
 
-use Niconico\ThumbInfo;
+use Revolution\Niconico\ThumbInfo;
 
 class NicoThumbTest extends TestCase
 {
+    /**
+     * @var ThumbInfo
+     */
     protected $thumb;
 
     public function setUp()
@@ -33,8 +36,6 @@ class NicoThumbTest extends TestCase
     public function testNicoThumbArray()
     {
         $this->thumb->get('sm9');
-
-//        dd($this->thumb->toArray());
 
         $this->assertEquals('sm9', $this->thumb->toArray()['video_id']);
     }
