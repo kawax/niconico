@@ -56,6 +56,18 @@ $query = new Query([
 ### example3
 ```php
 <?php
+use Revolution\Niconico\Search\Query;
+
+$query = Query::create([
+  'q'        => '初音ミク',
+  'targets'  => 'title,tags',
+  '_sort'    => '-viewCounter',
+])->filters([]);
+```
+
+### example4
+```php
+<?php
 use Revolution\Niconico\ThumbInfo;
 
 $thumb = new ThumbInfo();

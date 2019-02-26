@@ -29,7 +29,7 @@ class NicoSearchTest extends TestCase
 
         $res = $this->search->service('video')->search($query);
 
-        $this->assertInternalType('object', $res);
+        $this->assertIsObject($res);
         $this->assertEquals(200, $res->meta->status);
     }
 
@@ -39,7 +39,7 @@ class NicoSearchTest extends TestCase
 
         $res = $this->search->service('video')->search($query, true);
 
-        $this->assertInternalType('array', $res);
+        $this->assertIsArray($res);
         $this->assertEquals(200, $res['meta']['status']);
     }
 
@@ -97,6 +97,19 @@ class NicoSearchTest extends TestCase
             'q'       => '初音ミク',
             'targets' => 'title,tags',
         ]))->build();
+
+        $this->assertEquals(
+            'q=%E5%88%9D%E9%9F%B3%E3%83%9F%E3%82%AF&targets=title%2Ctags',
+            $query
+        );
+    }
+
+    public function testQueryCreate()
+    {
+        $query = Query::create([
+            'q'       => '初音ミク',
+            'targets' => 'title,tags',
+        ])->build();
 
         $this->assertEquals(
             'q=%E5%88%9D%E9%9F%B3%E3%83%9F%E3%82%AF&targets=title%2Ctags',

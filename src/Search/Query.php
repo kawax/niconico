@@ -38,6 +38,16 @@ class Query
     }
 
     /**
+     * @param array|null $query
+     *
+     * @return $this
+     */
+    public static function create(array $query = null): Query
+    {
+        return new static($query);
+    }
+
+    /**
      * @return string
      */
     public function build(): string
