@@ -1,6 +1,8 @@
 # niconico API
 
-[![Build Status](https://travis-ci.org/kawax/niconico.svg?branch=master)](https://travis-ci.org/kawax/niconico)
+[![Build Status](https://travis-ci.com/kawax/niconico.svg?branch=master)](https://travis-ci.com/kawax/niconico)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4e9a1edcc42746a6786f/maintainability)](https://codeclimate.com/github/kawax/niconico/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/4e9a1edcc42746a6786f/test_coverage)](https://codeclimate.com/github/kawax/niconico/test_coverage)
 
 ## Requirements
 PHP >= 7.1.3
