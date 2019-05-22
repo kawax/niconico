@@ -2,6 +2,8 @@
 
 use PHPUnit\Framework\TestCase;
 
+use GuzzleHttp\Client;
+
 use Revolution\Niconico\ThumbInfo;
 
 class NicoThumbTest extends TestCase
@@ -20,7 +22,9 @@ class NicoThumbTest extends TestCase
 
     public function testNicoThumb()
     {
-        $this->thumb->get('sm9');
+        $this->thumb->setClient(new Client())
+                    ->setUserAgent('niconico')
+                    ->get('sm9');
 
         $this->assertEquals('sm9', $this->thumb->video_id);
     }
@@ -31,6 +35,21 @@ class NicoThumbTest extends TestCase
 
         $this->assertContains('"video_id":"sm9"', $this->thumb->toJson());
         $this->assertContains('"video_id":"sm9"', (string) $this->thumb);
+    }
+
+    public function testNicoThumbConstruct()
+    {
+        $thumb = new ThumbInfo();
+
+        $this->assertInstanceOf(ThumbInfo::class, $thumb);
+        $this->assertFalse(isset($thumb->video_id));
+    }
+
+    public function testNicoThumbConstructWithParam()
+    {
+        $thumb = new ThumbInfo('sm9');
+
+        $this->assertEquals('sm9', $thumb->video_id);
     }
 
     public function testNicoThumbArray()
@@ -48,10 +67,19 @@ class NicoThumbTest extends TestCase
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException InvalidArgumentException
      */
     public function testNicoThumbDelete()
     {
         $this->thumb->get('sm8');
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testNicoThumbInvalidArgumentException()
+    {
+        $this->thumb->get('sm9');
+        $this->thumb->test;
     }
 }

@@ -83,6 +83,14 @@ var_dump($thumb->toArray());
 var_dump($thumb->toSimpleObject());
 ```
 
+### example5
+```php
+<?php
+use Revolution\Niconico\ThumbInfo;
+
+$thumb = new ThumbInfo('sm9');
+```
+
 ## エンドポイントが変更されたら
 publicプロパティなので変更できる。
 

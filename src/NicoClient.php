@@ -4,6 +4,7 @@ namespace Revolution\Niconico;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\GuzzleException;
 
 trait NicoClient
 {
@@ -18,7 +19,7 @@ trait NicoClient
     protected $userAgent = 'niconico';
 
     /**
-     * @param ClientInterface $client
+     * @param  ClientInterface  $client
      *
      * @return $this
      */
@@ -42,8 +43,8 @@ trait NicoClient
     }
 
     /**
-     * @param string $url
-     * @param string $method
+     * @param  string  $url
+     * @param  string  $method
      *
      * @return string
      */
@@ -55,11 +56,11 @@ trait NicoClient
             ],
         ]);
 
-        return (string)$response->getBody();
+        return (string) $response->getBody();
     }
 
     /**
-     * @param string $userAgent
+     * @param  string  $userAgent
      *
      * @return $this
      */

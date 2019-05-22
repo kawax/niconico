@@ -31,6 +31,11 @@ class NicoSearchTest extends TestCase
 
         $this->assertIsObject($res);
         $this->assertEquals(200, $res->meta->status);
+        $this->assertTrue(isset($query->q));
+        $this->assertNull($query->test);
+        $this->assertEquals('初音ミク', $query->q);
+
+        unset($query->test);
     }
 
     public function testSearchArray()
@@ -60,7 +65,7 @@ class NicoSearchTest extends TestCase
         $query->q = 'アニメ';
         $query->targets = 'tags';
         $query->fields = 'contentId,title,tags';
-        $query->filters(['filters[startTime][lt]=' . rawurlencode('2016-01-01T00:00:00+09:00')]);
+        $query->filters(['filters[startTime][lt]='.rawurlencode('2016-01-01T00:00:00+09:00')]);
 
         $res = $this->search->service('channel')->search($query);
 

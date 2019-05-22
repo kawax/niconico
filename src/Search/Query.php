@@ -22,7 +22,7 @@ class Query
     /**
      * Query constructor.
      *
-     * @param array|null $query
+     * @param  array|null  $query
      */
     public function __construct(array $query = null)
     {
@@ -38,7 +38,7 @@ class Query
     }
 
     /**
-     * @param array|null $query
+     * @param  array|null  $query
      *
      * @return $this
      */
@@ -54,15 +54,15 @@ class Query
     {
         $query = http_build_query($this->query, '', '&', PHP_QUERY_RFC3986);
 
-        if (!empty($this->filters)) {
-            $query .= '&' . implode('&', $this->filters);
+        if (! empty($this->filters)) {
+            $query .= '&'.implode('&', $this->filters);
         }
 
         return $query;
     }
 
     /**
-     * @param array $filters
+     * @param  array  $filters
      *
      * @return $this
      */
@@ -74,7 +74,7 @@ class Query
     }
 
     /**
-     * @param string $property
+     * @param  string  $property
      *
      * @return mixed
      */
@@ -88,7 +88,7 @@ class Query
     }
 
     /**
-     * @param string $property
+     * @param  string  $property
      * @param        $value
      */
     public function __set(string $property, $value)
@@ -97,7 +97,7 @@ class Query
     }
 
     /**
-     * @param string $name
+     * @param  string  $name
      *
      * @return bool
      */

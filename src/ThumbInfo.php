@@ -2,6 +2,8 @@
 
 namespace Revolution\Niconico;
 
+use GuzzleHttp\Exception\GuzzleException;
+
 /**
  * マジックメソッドを使うことにより項目が追加・変更されても大丈夫なようにしている
  *
@@ -23,21 +25,32 @@ class ThumbInfo
     protected $data;
 
     /**
-     * @param string $video_id sm9
+     * ThumbInfo constructor.
      *
-     * @throws \InvalidArgumentException
+     * @param  string|null  $video_id
+     */
+    public function __construct(?string $video_id = null)
+    {
+        if (! is_null($video_id)) {
+            $this->get($video_id);
+        }
+    }
+
+    /**
+     * @param  string  $video_id  sm9
      *
      * @return $this
+     * @throws \InvalidArgumentException
      */
     public function get(string $video_id): ThumbInfo
     {
-        $url = $this->endpoint . $video_id;
+        $url = $this->endpoint.$video_id;
 
         $response = $this->request($url);
 
         $xml = simplexml_load_string($response);
 
-        if ((string)$xml['status'] === 'fail') {
+        if ((string) $xml['status'] === 'fail') {
             $this->data = $xml->error;
 
             throw new \InvalidArgumentException(sprintf('[%s]', $xml->error->description));
@@ -81,18 +94,18 @@ class ThumbInfo
     }
 
     /**
-     * @param string $property
-     *
-     * @throws \Exception
+     * @param  string  $property
      *
      * @return string
+     * @throws \InvalidArgumentException
+     *
      */
     public function __get(string $property): string
     {
         if (property_exists($this->data, $property)) {
-            return (string)$this->data->{$property};
+            return (string) $this->data->{$property};
         }
 
-        throw new \Exception(sprintf('Property [%s] does not exist.', $property));
+        throw new \InvalidArgumentException(sprintf('Property [%s] does not exist.', $property));
     }
 }

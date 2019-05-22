@@ -24,14 +24,14 @@ class Search
     protected $service = 'video';
 
     /**
-     * @param Query $query
-     * @param bool  $assoc trueなら配列。falseならオブジェクト。
+     * @param  Query  $query
+     * @param  bool  $assoc  trueなら配列。falseならオブジェクト。
      *
      * @return mixed
      */
     public function search(Query $query, bool $assoc = false)
     {
-        $url = $this->endpoint() . '?' . $query->build();
+        $url = $this->endpoint().'?'.$query->build();
 
         $res = json_decode($this->request($url), $assoc);
 
@@ -39,7 +39,7 @@ class Search
     }
 
     /**
-     * @param string $service
+     * @param  string  $service
      *
      * @return $this
      */
