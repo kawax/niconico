@@ -59,33 +59,6 @@ class NicoSearchTest extends TestCase
         $this->assertEquals(200, $res['meta']['status']);
     }
 
-    public function testSearchChannel()
-    {
-        $query = new Query();
-        $query->q = 'アニメ';
-        $query->targets = 'tags';
-        $query->fields = 'contentId,title,tags';
-        $query->filters(['filters[startTime][lt]='.rawurlencode('2016-01-01T00:00:00+09:00')]);
-
-        $res = $this->search->service('channel')->search($query);
-
-        $this->assertEquals(200, $res->meta->status);
-    }
-
-    public function testSearchIllust()
-    {
-        $query = new Query();
-        $query->q = '初音ミク';
-        $query->targets = 'tags';
-        $query->fields = 'contentId,title,description,tags,thumbnailUrl,viewCounter,mylistCounter,commentCounter,startTime';
-        $query->_sort = '-startTime';
-        $query->_limit = '10';
-
-        $res = $this->search->service('illust')->search($query);
-
-        $this->assertEquals(200, $res->meta->status);
-    }
-
     public function testQueryBuild()
     {
         $query = (new Query())->build();
