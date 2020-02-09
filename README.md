@@ -5,7 +5,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/4e9a1edcc42746a6786f/test_coverage)](https://codeclimate.com/github/kawax/niconico/test_coverage)
 
 ## Requirements
-PHP >= 7.1.3
+PHP >= 7.2
 
 ## 実装済みAPI
 自分で使う用なので必要なAPIのみ実装。

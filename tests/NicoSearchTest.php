@@ -12,7 +12,7 @@ class NicoSearchTest extends TestCase
      */
     protected $search;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

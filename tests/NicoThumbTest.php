@@ -13,7 +13,7 @@ class NicoThumbTest extends TestCase
      */
     protected $thumb;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -33,8 +33,8 @@ class NicoThumbTest extends TestCase
     {
         $this->thumb->get('sm9');
 
-        $this->assertContains('"video_id":"sm9"', $this->thumb->toJson());
-        $this->assertContains('"video_id":"sm9"', (string) $this->thumb);
+        $this->assertStringContainsString('"video_id":"sm9"', $this->thumb->toJson());
+        $this->assertStringContainsString('"video_id":"sm9"', (string)$this->thumb);
     }
 
     public function testNicoThumbConstruct()
@@ -66,19 +66,17 @@ class NicoThumbTest extends TestCase
         $this->assertEquals('sm9', $this->thumb->toSimpleObject()->video_id);
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testNicoThumbDelete()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->thumb->get('sm8');
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testNicoThumbInvalidArgumentException()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->thumb->get('sm9');
         $this->thumb->test;
     }
