@@ -2,6 +2,7 @@
 
 namespace Revolution\Niconico;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Revolution\Niconico\Search\Query;
 
 /**
@@ -28,14 +29,13 @@ class Search
      * @param  bool  $assoc  trueなら配列。falseならオブジェクト。
      *
      * @return mixed
+     * @throws GuzzleException
      */
     public function search(Query $query, bool $assoc = false)
     {
         $url = $this->endpoint().'?'.$query->build();
 
-        $res = json_decode($this->request($url), $assoc);
-
-        return $res;
+        return json_decode($this->request($url), $assoc);
     }
 
     /**

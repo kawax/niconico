@@ -28,6 +28,8 @@ class ThumbInfo
      * ThumbInfo constructor.
      *
      * @param  string|null  $video_id
+     *
+     * @throws GuzzleException
      */
     public function __construct(?string $video_id = null)
     {
@@ -41,6 +43,7 @@ class ThumbInfo
      *
      * @return $this
      * @throws \InvalidArgumentException
+     * @throws GuzzleException
      */
     public function get(string $video_id): ThumbInfo
     {

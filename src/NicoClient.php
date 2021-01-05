@@ -47,6 +47,7 @@ trait NicoClient
      * @param  string  $method
      *
      * @return string
+     * @throws GuzzleException
      */
     public function request(string $url, string $method = 'GET'): string
     {
