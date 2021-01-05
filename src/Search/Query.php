@@ -27,14 +27,14 @@ class Query
     public function __construct(array $query = null)
     {
         $this->query = $query ?? [
-                'q'        => '初音ミク',
-                'targets'  => 'title,tags',
-                'fields'   => 'contentId,title,description,tags,startTime,viewCounter,thumbnailUrl',
-                '_sort'    => '-startTime',
-                '_offset'  => '0',
-                '_limit'   => '10',
-                '_context' => 'niconico',
-            ];
+            'q'        => '初音ミク',
+            'targets'  => 'title,tags',
+            'fields'   => 'contentId,title,description,tags,startTime,viewCounter,thumbnailUrl',
+            '_sort'    => '-startTime',
+            '_offset'  => '0',
+            '_limit'   => '10',
+            '_context' => 'niconico',
+        ];
     }
 
     /**

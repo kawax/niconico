@@ -5,7 +5,7 @@ namespace Revolution\Niconico;
 use GuzzleHttp\Exception\GuzzleException;
 
 /**
- * マジックメソッドを使うことにより項目が追加・変更されても大丈夫なようにしている
+ * マジックメソッドを使うことにより項目が追加・変更されても大丈夫なようにしている.
  *
  * Class ThumbInfo
  * getthumbinfo.
@@ -101,7 +101,6 @@ class ThumbInfo
      *
      * @return string
      * @throws \InvalidArgumentException
-     *
      */
     public function __get(string $property): string
     {
