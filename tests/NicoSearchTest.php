@@ -1,7 +1,6 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-
 use Revolution\Niconico\Search;
 use Revolution\Niconico\Search\Query;
 

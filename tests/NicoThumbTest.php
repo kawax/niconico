@@ -1,9 +1,7 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
 use GuzzleHttp\Client;
-
+use PHPUnit\Framework\TestCase;
 use Revolution\Niconico\ThumbInfo;
 
 class NicoThumbTest extends TestCase
@@ -34,7 +32,7 @@ class NicoThumbTest extends TestCase
         $this->thumb->get('sm9');
 
         $this->assertStringContainsString('"video_id":"sm9"', $this->thumb->toJson());
-        $this->assertStringContainsString('"video_id":"sm9"', (string)$this->thumb);
+        $this->assertStringContainsString('"video_id":"sm9"', (string) $this->thumb);
     }
 
     public function testNicoThumbConstruct()
