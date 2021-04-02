@@ -26,7 +26,7 @@ class NicoSearchTest extends TestCase
         $query->_sort = '-viewCounter';
         $query->filters(['filters[mylistCounter][gte]=10000', 'filters[commentCounter][gte]=100000']);
 
-        $res = $this->search->service('video')->search($query);
+        $res = $this->search->search($query);
 
         $this->assertIsObject($res);
         $this->assertEquals(200, $res->meta->status);
@@ -41,20 +41,9 @@ class NicoSearchTest extends TestCase
     {
         $query = new Query();
 
-        $res = $this->search->service('video')->search($query, true);
+        $res = $this->search->search($query, true);
 
         $this->assertIsArray($res);
-        $this->assertEquals(200, $res['meta']['status']);
-    }
-
-    public function testSearchLive()
-    {
-        $query = new Query();
-        $query->q = 'ニコニコアニメスペシャル';
-        $query->targets = 'tags';
-
-        $res = $this->search->service('live')->search($query, true);
-
         $this->assertEquals(200, $res['meta']['status']);
     }
 

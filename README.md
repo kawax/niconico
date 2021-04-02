@@ -11,7 +11,7 @@ PHP >= 7.3
 自分で使う用なので必要なAPIのみ実装。
 
 - getthumbinfo https://dic.nicovideo.jp/a/%E3%83%8B%E3%82%B3%E3%83%8B%E3%82%B3%E5%8B%95%E7%94%BBapi
-- コンテンツ検索API https://site.nicovideo.jp/search-api-docs/search.html
+- スナップショット検索API v2 https://site.nicovideo.jp/search-api-docs/snapshot
 
 ## Install
 
@@ -37,10 +37,10 @@ $query->filters(['filters[mylistCounter][gte]=10000', 'filters[commentCounter][g
 $search = new Search();
 
 // returns object
-$response = $search->service('video')->search($query);
+$response = $search->search($query);
 
 // returns array
-$response = $search->service('video')->search($query, true);
+$response = $search->search($query, true);
 ```
 
 ### example2

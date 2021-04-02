@@ -6,9 +6,9 @@ use GuzzleHttp\Exception\GuzzleException;
 use Revolution\Niconico\Search\Query;
 
 /**
- * niconico コンテンツ検索API.
+ * niconico スナップショット検索API v2.
  *
- * @see http://site.nicovideo.jp/search-api-docs/search.html
+ * @see https://site.nicovideo.jp/search-api-docs/snapshot
  */
 class Search
 {
@@ -17,12 +17,7 @@ class Search
     /**
      * @var string
      */
-    public $endpoint = 'https://api.search.nicovideo.jp/api/v2/:service/contents/search';
-
-    /**
-     * @var string
-     */
-    protected $service = 'video';
+    public $endpoint = 'https://api.search.nicovideo.jp/api/v2/snapshot/video/contents/search';
 
     /**
      * @param  Query  $query
@@ -39,22 +34,10 @@ class Search
     }
 
     /**
-     * @param  string  $service
-     *
-     * @return $this
-     */
-    public function service(string $service): Search
-    {
-        $this->service = $service;
-
-        return $this;
-    }
-
-    /**
      * @return string
      */
     protected function endpoint(): string
     {
-        return str_replace(':service', $this->service, $this->endpoint);
+        return $this->endpoint;
     }
 }
