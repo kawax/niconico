@@ -6,10 +6,7 @@ use Revolution\Niconico\Search\Query;
 
 class NicoSearchTest extends TestCase
 {
-    /**
-     * @var Search
-     */
-    protected $search;
+    protected Search $search;
 
     public function setUp(): void
     {
@@ -60,7 +57,7 @@ class NicoSearchTest extends TestCase
     public function testQueryConstruct()
     {
         $query = (new Query([
-            'q'       => '初音ミク',
+            'q' => '初音ミク',
             'targets' => 'title,tags',
         ]))->build();
 
@@ -73,7 +70,7 @@ class NicoSearchTest extends TestCase
     public function testQueryCreate()
     {
         $query = Query::create([
-            'q'       => '初音ミク',
+            'q' => '初音ミク',
             'targets' => 'title,tags',
         ])->build();
 

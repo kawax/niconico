@@ -6,10 +6,7 @@ use Revolution\Niconico\ThumbInfo;
 
 class NicoThumbTest extends TestCase
 {
-    /**
-     * @var ThumbInfo
-     */
-    protected $thumb;
+    protected ThumbInfo $thumb;
 
     public function setUp(): void
     {
@@ -21,8 +18,8 @@ class NicoThumbTest extends TestCase
     public function testNicoThumb()
     {
         $this->thumb->setClient(new Client())
-                    ->setUserAgent('niconico')
-                    ->get('sm9');
+            ->setUserAgent('niconico')
+            ->get('sm9');
 
         $this->assertEquals('sm9', $this->thumb->video_id);
     }

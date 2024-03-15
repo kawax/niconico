@@ -8,31 +8,17 @@ use GuzzleHttp\Exception\GuzzleException;
 
 trait NicoClient
 {
-    /**
-     * @var ClientInterface
-     */
-    protected $client;
+    protected ?ClientInterface $client = null;
 
-    /**
-     * @var string
-     */
-    protected $userAgent = 'niconico';
+    protected string $userAgent = 'niconico';
 
-    /**
-     * @param  ClientInterface  $client
-     *
-     * @return $this
-     */
-    public function setClient(ClientInterface $client)
+    public function setClient(ClientInterface $client): static
     {
         $this->client = $client;
 
         return $this;
     }
 
-    /**
-     * @return Client|ClientInterface
-     */
     public function getClient(): ClientInterface
     {
         if (is_null($this->client)) {
@@ -43,10 +29,6 @@ trait NicoClient
     }
 
     /**
-     * @param  string  $url
-     * @param  string  $method
-     *
-     * @return string
      * @throws GuzzleException
      */
     public function request(string $url, string $method = 'GET'): string
@@ -60,12 +42,7 @@ trait NicoClient
         return (string) $response->getBody();
     }
 
-    /**
-     * @param  string  $userAgent
-     *
-     * @return $this
-     */
-    public function setUserAgent(string $userAgent)
+    public function setUserAgent(string $userAgent): static
     {
         $this->userAgent = $userAgent;
 
