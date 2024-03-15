@@ -26,7 +26,7 @@ class Query
         ];
     }
 
-    public static function create(array $query = null): Query
+    public static function create(array $query = null): static
     {
         return new static($query);
     }
@@ -42,14 +42,14 @@ class Query
         return $query;
     }
 
-    public function filters(array $filters): Query
+    public function filters(array $filters): static
     {
         $this->filters = $filters;
 
         return $this;
     }
 
-    public function __get(string $property)
+    public function __get(string $property): mixed
     {
         if (array_key_exists($property, $this->query)) {
             return $this->query[$property];
@@ -58,7 +58,7 @@ class Query
         }
     }
 
-    public function __set(string $property, $value)
+    public function __set(string $property, $value): void
     {
         $this->query[$property] = $value;
     }
@@ -68,7 +68,7 @@ class Query
         return isset($this->query[$name]);
     }
 
-    public function __unset(string $name)
+    public function __unset(string $name): void
     {
         unset($this->query[$name]);
     }
