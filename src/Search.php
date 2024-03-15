@@ -18,9 +18,9 @@ class Search
 
     /**
      * @param  Query  $query
-     * @param  bool  $assoc trueなら配列。falseならオブジェクト。
-     *
+     * @param  bool  $assoc  trueなら配列。falseならオブジェクト。
      * @return mixed
+     *
      * @throws GuzzleException
      */
     public function search(Query $query, bool $assoc = false): mixed
