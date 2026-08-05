@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Revolution\Niconico;
 
 use GuzzleHttp\Client;
@@ -22,7 +24,7 @@ trait NicoClient
     public function getClient(): ClientInterface
     {
         if (is_null($this->client)) {
-            $this->client = new Client();
+            $this->client = new Client;
         }
 
         return $this->client;

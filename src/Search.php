@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Revolution\Niconico;
 
 use GuzzleHttp\Exception\GuzzleException;
@@ -17,9 +19,7 @@ class Search
     public string $endpoint = 'https://snapshot.search.nicovideo.jp/api/v2/snapshot/video/contents/search';
 
     /**
-     * @param  Query  $query
      * @param  bool  $assoc  trueなら配列。falseならオブジェクト。
-     * @return mixed
      *
      * @throws GuzzleException
      */

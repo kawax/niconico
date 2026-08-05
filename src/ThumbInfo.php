@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Revolution\Niconico;
 
 use GuzzleHttp\Exception\GuzzleException;
@@ -23,7 +25,6 @@ class ThumbInfo
     /**
      * ThumbInfo constructor.
      *
-     * @param  string|null  $video_id
      *
      * @throws GuzzleException
      */

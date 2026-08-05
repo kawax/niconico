@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Revolution\Niconico\Search;
 
 /**
@@ -13,7 +15,7 @@ class Query
 
     protected array $query;
 
-    public function __construct(array $query = null)
+    public function __construct(?array $query = null)
     {
         $this->query = $query ?? [
             'q' => '初音ミク',
@@ -26,7 +28,7 @@ class Query
         ];
     }
 
-    public static function create(array $query = null): static
+    public static function create(?array $query = null): static
     {
         return new static($query);
     }

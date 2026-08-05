@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use PHPUnit\Framework\TestCase;
 use Revolution\Niconico\Search;
 use Revolution\Niconico\Search\Query;
@@ -8,16 +10,16 @@ class NicoSearchTest extends TestCase
 {
     protected Search $search;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
-        $this->search = new Search();
+        $this->search = new Search;
     }
 
-    public function testSearch()
+    public function test_search()
     {
-        $query = new Query();
+        $query = new Query;
         $query->q = '初音ミク';
         $query->targets = 'title,tags';
         $query->_sort = '-viewCounter';
@@ -34,9 +36,9 @@ class NicoSearchTest extends TestCase
         unset($query->test);
     }
 
-    public function testSearchArray()
+    public function test_search_array()
     {
-        $query = new Query();
+        $query = new Query;
 
         $res = $this->search->search($query, true);
 
@@ -44,9 +46,9 @@ class NicoSearchTest extends TestCase
         $this->assertEquals(200, $res['meta']['status']);
     }
 
-    public function testQueryBuild()
+    public function test_query_build()
     {
-        $query = (new Query())->build();
+        $query = (new Query)->build();
 
         $this->assertEquals(
             'q=%E5%88%9D%E9%9F%B3%E3%83%9F%E3%82%AF&targets=title%2Ctags&fields=contentId%2Ctitle%2Cdescription%2Ctags%2CstartTime%2CviewCounter%2CthumbnailUrl&_sort=-startTime&_offset=0&_limit=10&_context=niconico',
@@ -54,7 +56,7 @@ class NicoSearchTest extends TestCase
         );
     }
 
-    public function testQueryConstruct()
+    public function test_query_construct()
     {
         $query = (new Query([
             'q' => '初音ミク',
@@ -67,7 +69,7 @@ class NicoSearchTest extends TestCase
         );
     }
 
-    public function testQueryCreate()
+    public function test_query_create()
     {
         $query = Query::create([
             'q' => '初音ミク',
