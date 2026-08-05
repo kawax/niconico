@@ -1,8 +1,8 @@
 # niconico API
 
-[![Build Status](https://travis-ci.com/kawax/niconico.svg?branch=master)](https://travis-ci.com/kawax/niconico)
-[![Maintainability](https://api.codeclimate.com/v1/badges/4e9a1edcc42746a6786f/maintainability)](https://codeclimate.com/github/kawax/niconico/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/4e9a1edcc42746a6786f/test_coverage)](https://codeclimate.com/github/kawax/niconico/test_coverage)
+[![tests](https://github.com/kawax/niconico/actions/workflows/tests.yml/badge.svg)](https://github.com/kawax/niconico/actions/workflows/tests.yml)
+[![Maintainability](https://qlty.sh/gh/kawax/projects/niconico/maintainability.svg)](https://qlty.sh/gh/kawax/projects/niconico)
+[![Code Coverage](https://qlty.sh/gh/kawax/projects/niconico/coverage.svg)](https://qlty.sh/gh/kawax/projects/niconico)
 
 ## Requirements
 PHP >= 8.0
